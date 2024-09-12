@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import AuthProvider from "@/context/AuthProvider";
 
 const geistSans = localFont({
     src: "./fonts/GeistVF.woff",
@@ -19,28 +20,20 @@ export const metadata: Metadata = {
         "Simple anonymous message application with Mongoose and NextJS in TypeScript.",
 };
 
-// export default function RootLayout({
-//     children,
-// }: Readonly<{
-//     children: React.ReactNode;
-// }>) {
-//     return (
-//         <html lang="en">
-//             <body
-//                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-//             >
-//                 {children}
-//             </body>
-//         </html>
-//     );
-// }
-
-export default function RootLayout() {
+export default function RootLayout({
+    children,
+}: Readonly<{
+    children: React.ReactNode;
+}>) {
     return (
         <html lang="en">
-            <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-            ></body>
+            <AuthProvider>
+                <body
+                    className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+                >
+                    {children}
+                </body>
+            </AuthProvider>
         </html>
     );
 }
