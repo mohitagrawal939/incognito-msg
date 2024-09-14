@@ -28,7 +28,7 @@ export async function GET(request: Request) {
                     message:
                         usernameErrors?.length > 0
                             ? usernameErrors.join(", ")
-                            : "Invalid quey parameters",
+                            : "Invalid query parameters",
                 },
                 {
                     status: 400,
@@ -65,11 +65,11 @@ export async function GET(request: Request) {
             }
         );
     } catch (err) {
-        console.error();
+        console.error("Error checking username");
         return Response.json(
             {
                 success: false,
-                message: "Error hecking username",
+                message: "Error checking username",
             },
             {
                 status: 500,
