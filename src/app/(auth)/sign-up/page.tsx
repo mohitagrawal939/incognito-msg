@@ -163,7 +163,7 @@ function SignUp() {
                         <Button type="submit" disabled={isSubmitting}>
                             {isSubmitting ? (
                                 <>
-                                    <Loader2 className="m2-2 h-4 w-4 animate-spin" />
+                                    <Loader2 className="m2-2 h-4 w-4 animate-spin" />{" "}
                                     Please wait
                                 </>
                             ) : (
