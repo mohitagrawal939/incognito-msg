@@ -33,23 +33,31 @@ function SignIn() {
     });
 
     const onSubmit = async (data: z.infer<typeof signInSchema>) => {
-        setIsSubmitting(true);
-        const result = await signIn("credentials", {
-            identifier: data.identifier,
-            password: data.password,
-            redirect: false,
-        });
-        setIsSubmitting(false);
-        if (result?.error) {
+        if (data?.identifier.trim() === "" || data?.password.trim() === "") {
             toast({
                 variant: "destructive",
-                title: "Login failed",
-                description: "Incorrect username or password",
+                title: "Error",
+                description: "Username/Email and password is required",
             });
-        }
+        } else {
+            setIsSubmitting(true);
+            const result = await signIn("credentials", {
+                identifier: data.identifier,
+                password: data.password,
+                redirect: false,
+            });
+            setIsSubmitting(false);
+            if (result?.error) {
+                toast({
+                    variant: "destructive",
+                    title: "Login failed",
+                    description: "Incorrect username or password",
+                });
+            }
 
-        if (result?.url) {
-            router.replace("/dashboard");
+            if (result?.url) {
+                router.replace("/dashboard");
+            }
         }
     };
     return (
