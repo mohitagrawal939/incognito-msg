@@ -95,7 +95,7 @@ export async function POST(req: Request) {
             }
         );
     } catch (err) {
-        console.log("Error registering user", err);
+        console.error("Error registering user", err);
         return Response.json(
             {
                 success: false,
