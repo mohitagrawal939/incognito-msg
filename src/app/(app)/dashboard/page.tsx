@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import MessageCard from "@/components/MessageCard";
+import NotLoggedIn from "@/components/NotLoggedIn";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Switch } from "@/components/ui/switch";
@@ -54,7 +55,7 @@ const Dashboard = () => {
         setIsLoading(true);
         setIsSwitchLoading(false);
         try {
-            const res = await axios.get<ApiResponse>(`/api/get-message`);
+            const res = await axios.get<ApiResponse>(`/api/get-messages`);
             setMessages(res.data.messages || []);
             if (refresh) {
                 toast({
@@ -104,6 +105,10 @@ const Dashboard = () => {
         }
     };
 
+    if (!session || !session.user) {
+        return <NotLoggedIn />;
+    }
+
     const { username } = session?.user as User;
     const baseUrl = `${window.location.protocol}//${window.location.host}`;
     const profileUrl = `${baseUrl}/u/${username}`;
@@ -116,9 +121,6 @@ const Dashboard = () => {
         });
     };
 
-    if (!session || !session.user) {
-        return <div>Please login</div>;
-    }
     return (
         <div className="my-8 mx-4 md:mx-8 lg:mx-auto p-6 bg-white rounded w-full max-w-6xl">
             <h1 className="text-4xl font-bold mb-4">User Dashboard</h1>
