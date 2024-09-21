@@ -74,7 +74,7 @@ const Dashboard = () => {
             });
         } finally {
             setIsLoading(false);
-            setIsSwitchLoading(true);
+            setIsSwitchLoading(false);
         }
     };
 

@@ -24,17 +24,35 @@ export async function GET() {
     const userId = new mongoose.Types.ObjectId(_user._id);
 
     try {
+        const userCheck = await UserModel.findOne({
+            $or: [{ email: _user.email }],
+        });
+
+        if (!userCheck) {
+            return Response.json(
+                {
+                    success: false,
+                    message: "User not found",
+                },
+                {
+                    status: 404,
+                }
+            );
+        }
+
+        //this is for learning althought above user validation brings the user detaisl but this is to learn abour aggregate methods.
         const user = await UserModel.aggregate([
             { $match: { _id: userId } },
             { $unwind: "$messages" },
             { $sort: { "messages.createdAt": -1 } },
             { $group: { _id: "$_id", messages: { $push: "$messages" } } },
         ]).exec();
+
         if (!user || user.length === 0) {
             return Response.json(
                 {
                     success: false,
-                    message: "User not found",
+                    message: "No messages found",
                 },
                 {
                     status: 404,
