@@ -7,7 +7,7 @@ import { Toaster } from "@/components/ui/toaster";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: "Incognito-msg",
+    title: "Incognito Messages",
     description:
         "Simple anonymous message application with Mongoose and NextJS in TypeScript.",
 };

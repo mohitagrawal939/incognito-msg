@@ -1,43 +1,21 @@
-import Image from "next/image";
-
+import Footer from "@/components/Footer";
 export default function Home() {
     return (
-        <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-4 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-            <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-                <div className="text-6xl">Coming soon...</div>
+        <>
+            <main className="flex-grow flex flex-col items-center justify-center px-4 md:px-24 py-12 bg-gray-300 text-black">
+                <section className="text-center mb-8 md:mb-12">
+                    <h1 className="text-3xl md:text-5xl font-bold">
+                        Dive into the world of Incognito Messages
+                    </h1>
+                    <p className="mt-3 md:mt-4 text-base md:text-lg">
+                        Incognito Messages - Where your identity remains a
+                        secret. Send messages via public profile link and let
+                        them guess. Share feedback, funny messages and many
+                        more.
+                    </p>
+                </section>
             </main>
-            <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-                <a
-                    className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-                    href="https://github.com/mohitagrawal939"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <Image
-                        aria-hidden
-                        src="https://nextjs.org/icons/github.svg"
-                        alt="Window icon"
-                        width={16}
-                        height={16}
-                    />
-                    Github
-                </a>
-                <a
-                    className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-                    href="https://mohitagrawal.xyz"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <Image
-                        aria-hidden
-                        src="https://nextjs.org/icons/globe.svg"
-                        alt="Globe icon"
-                        width={16}
-                        height={16}
-                    />
-                    www.mohitagrawal.xyz →
-                </a>
-            </footer>
-        </div>
+            <Footer />
+        </>
     );
 }
