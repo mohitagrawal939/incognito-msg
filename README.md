@@ -1,4 +1,4 @@
-To see live example click [here.](https://incognito-msg.mohitagrawal.xyz)
+To see live example click [here.](https://incognito-msg.mohitagrawal.com)
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
